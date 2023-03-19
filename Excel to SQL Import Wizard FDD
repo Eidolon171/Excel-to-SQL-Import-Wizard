@@ -1,0 +1,142 @@
+Excel to SQL Import Wizard
+Functional Design Document (FDD)
+Date: 2023-03-19
+Revision: 1.2
+
+
+Project Title
+Excel to SQL Import Wizard .NET Application
+
+Application Developer
+Elijah D Brown, Full System Developer, AuNyx LLC
+
+ 
+Introduction
+
+1.1 Purpose
+The purpose of this Functional Design Document (FDD) is to provide a detailed description of the Excel to SQL Import Wizard Application. This document aims to provide a clear understanding of the application's functionality and outline its main features.
+
+1.2 Scope
+The application will allow the end user to import data from any Excel file and upload it to any target table on any target SQL database and Server Instance.
+
+
+ 
+Functional Requirements
+
+2.1 Load Saved Settings
+The application must be able to load saved settings when the form is loaded. This includes target SQL connection and SQL table details.
+
+2.2 Save User Input
+The application must allow users to input and save target SQL connection and SQL table details.
+
+2.3 Choose Excel File
+The application must provide the user with an option to select an Excel file from their local system.
+
+2.4 Upload Data
+The application must upload data from the selected Excel file to the target SQL database.
+
+
+ 
+Event Handlers
+
+3.1 Form Loader
+This event handler loads the user's saved settings.
+
+3.2 Save Settings Button 1 – SQL Database Connection Configuration
+This event handler saves the user's input for the target SQL connection, displays debug messages to the console, and shows a message box indicating the settings have been saved.
+
+3.3 Save Settings Button 2 – SQL Table Configuration
+This event handler saves the user's input for the target SQL table, displays debug messages to the console, and shows a message box indicating the settings have been saved.
+
+3.4 Select File Button
+This event handler opens an ‘Open File Dialog’ to let the user choose an Excel file, sets the Open File Dialog's file filter to display only Excel workbooks and all files, and updates the label control with the selected file path.
+
+3.5 Upload Data Button
+This event handler uploads the data from the selected Excel file to the target SQL database. It handles checking the file path, creating a connection string for connecting to the SQL server, opening the Excel file and creating a reader for its content, converting the Excel data to a ‘DataSet’, retrieving table name and columns from saved settings, parsing column definitions, setting up an INSERT INTO command, executing the command for each row in the ‘DataTable’, and displaying debug messages and error messages.
+
+
+ 
+Graphical User Interface
+
+4.1 General Design
+The application's user interface features a soft, soothing blue and violet background with various elements and sections. The layout of the interface is as follows:
+
+4.2 Left Picture Box
+Company logo displayed in the top left corner of the client window.
+
+4.3 Right Picture Box
+Company logo displayed in the top right corner of the client window.
+
+4.4 Header Label
+App title "Excel to SQL Import Wizard" centered at the top of the client window.
+
+4.5 Settings 1 Label
+Large text identifying the "Settings" section.
+
+4.6 Settings 2 Label
+Text identifying the "SQL Database Connection Settings" section within the Settings section.
+
+4.7 Settings 3 Label
+Text identifying the "SQL Table Settings" section within the Settings section.
+
+4.8 Server Name Label
+Accompanies the Server Name Text Box.
+
+4.9 Database Name Label
+Accompanies the Database Name Text Box.
+
+4.10 Username Label
+Accompanies the Username Text Box.
+
+4.11 Password Label
+Accompanies the Password Text Box.
+
+4.12 SQL Table Name Label
+Accompanies the Table Name Text Box.
+
+4.13 SQL Column Names Label
+Accompanies the Column Names and Data Types Text Box.
+
+4.14 Server Name Text Box
+User enters the server name.
+
+
+4.15 Database Name Text Box
+User enters the database name.
+
+4.16 Username Text Box
+User enters the username.
+
+4.17 Password Text Box
+User enters the password.
+
+4.18 Table Name Text Box
+User enters the table name.
+
+4.19 Column Names and Data Types Text Box
+User enters the column names and data types for the target SQL table in the format "Column1, datatype1; Column2, datatype2; etc."
+
+4.20 Save Settings Button 1
+Saves the user-entered SQL Database Connection Settings to persistent data.
+
+4.21 Save Settings Button 2
+Saves the user-entered SQL Table Settings to persistent data.
+
+4.22 Import File Label
+Large text identifying the "Import File" section.
+
+4.23 Select File Button
+Opens an ‘Open File Dialog’ window to allow the user to choose an Excel file and updates the File Path Label with the selected file path.
+
+4.24 Upload Data Button
+Validates the file path, opens the chosen Excel file, parses its contents, and inserts data into the chosen SQL table.
+
+4.24 File Path Label
+Initially blank and transparent, displays the selected file path of the Excel file once chosen by the user.
+
+4.26 Footer Label
+Displays build, version, and developer details, anchored in the bottom left corner of the client window. 
+ 
+Conclusion
+
+It is often necessary to assign a role or workstream to import large sets of relational data into an SQL database. However, it is not common or wise to distribute broad access, even to trusted users. Therefore, SQL administrators often need to provide users with a controlled method for importing large datasets into one or more SQL tables. This application can be configured to assign specific credentials, and can be reset to apply changes to any table (given authorized credentials).
